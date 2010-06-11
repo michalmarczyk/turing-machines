@@ -1,0 +1,27 @@
+# turing-machines
+
+A Turing machine emulator in Clojure.
+
+## Usage
+
+(compile-turing-program & instructions) produces a Clojure function
+which, when passed two lists representing the initial contents of the
+tape, will execute the programme given by the instructions.
+
+The first list is a list of positions to the left of the machine head,
+starting from the one immediately to the right of the current position
+(thus it goes right-to-left).  The second list starts with the cell
+the machine head is hovering over, with the cells to the right
+following.  Should the machine head move pass the end of the tape
+fragment described by the initial two lists, padding with false
+happens automatically.
+
+make-tape and numbers-to-tape provide convenient means of constructing
+tape descriptions.  final-tape and final-number extract information
+from machine run results.
+
+## License
+
+Copyright (C) 2010 Michał Marczyk
+
+Distributed under the Eclipse Public License, the same as Clojure.
