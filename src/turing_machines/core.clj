@@ -62,9 +62,15 @@
        count))
 
 (comment
-  (apply
-   (tm/compile-turing-program
-    [0 false true :right 1]
-    [1 false true :right 2]
-    [2 false true :right 3])
-   (tm/make-tape)))
+  (require '[turing-machines.core :as tm])
+  (-> (apply
+       (tm/compile-turing-program
+        [0 false true :right 1]
+        [1 false true :right 2]
+        [2 false true :right 3]
+        [3 false false :left 3]
+        [3 true true :left 4]
+        [4 true true :left 4]
+        [4 false false :right 5])
+       (tm/make-tape))
+      tm/final-number))
